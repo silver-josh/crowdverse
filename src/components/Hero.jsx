@@ -1,46 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
 import styles from "../style";
 import { discount, robot } from "../assets";
 import GetStarted from "./GetStarted";
 
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const texts = ['Crowdfunding'];
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting) {
-        sectionRef.current.classList.add('float-in');
-      } else {
-        sectionRef.current.classList.remove('float-in');
-      }
-    });
-
-    observer.observe(sectionRef.current);
-
-    return () => {
-      observer.unobserve(sectionRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section
-      id="home"
-      className={`flex md:flex-row flex-col ${styles.paddingY} float-in`}
-      ref={sectionRef}
-    >
+    <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY} float-in`}>
       <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2">
+        <div className={`flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2`}>
           <img src={discount} alt="discount" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2`}>
             <span className="text-white">Ignite </span> Your Vision{" "}
@@ -52,15 +18,19 @@ const Hero = () => {
           <h1 className="flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100.8px] leading-[75px]">
             The Next <br className="sm:block hidden" />{" "}
             <span className="text-gradient">Generation:</span>{" "}
-            {texts[currentIndex]}{" "}
           </h1>
           <div className="ss:flex hidden md:mr-4 mr-0">
             <GetStarted />
           </div>
         </div>
 
+        {/* Updated heading with smooth gradient */}
+        <h1 className="font-poppins font-semibold ss:text-[68px] text-[52px] text-transparent ss:leading-[100.8px] leading-[75px] w-full smooth-gradient">
+          Crowdfunding
+        </h1>
+
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Unleash your creativity, innovation, and dreams. Metamask-integrated crowdfunding. Set goals, secure funding. Join now!
+          Unleash your creativity, innovation, and dreams. Metamask-integrated crowdfunding. Set goals, secure funding. Join now!.
         </p>
       </div>
 

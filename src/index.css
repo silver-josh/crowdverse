@@ -153,3 +153,26 @@
 .float-in {
   animation: floatIn 2s ease-in-out forwards;
 }
+
+
+.smooth-gradient {
+  background: linear-gradient(45deg, #f472b6, #9333ea, #3b82f6, #10b981, #f472b6);
+  background-size: 1000% 1000%;
+  animation: gradientAnimation 20s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
